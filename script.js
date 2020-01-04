@@ -51,8 +51,6 @@ var questions = [
     }
 ];
 
-
-
 $(document).ready(function () {
     var sec = 600;
     let currentQuestion = 0;
@@ -64,7 +62,7 @@ $(document).ready(function () {
     function highscores(arr) {
         var userScore = sec;
         var lastPage = $("<form id = 'scoreform'>")
-        var label = $("<label>").text("Congratulations!! You've finished the game! Your score is " + userScore, "! Enter your name below to save your highscore")
+        var label = $("<label>").text("Congratulations!! You've finished the game! Enter your name below to save your highscore. Your score is " + userScore)
         lastPage.append(label)
         var input = $("<input id = 'userinitials'>")
         var inputClass = input.addClass("form-control")
@@ -76,6 +74,7 @@ $(document).ready(function () {
 
     function renderQuestion(arr) {
         if (currentQuestion >= questions.length) {
+            clearInterval(time);
             return highscores()
         }
         var P = $("<p>")
@@ -133,3 +132,5 @@ $(document).ready(function () {
 
     });
 });
+
+ 
