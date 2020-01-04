@@ -51,15 +51,32 @@ var questions = [
     }
 ];
 
+
+
 $(document).ready(function () {
     var sec = 600;
     let currentQuestion = 0;
     var time;
+    $(document).on("submit", "#scoreform", function (e) {
+        e.preventDefault()
+    })
+
+    function highscores(arr) {
+        var userScore = sec;
+        var lastPage = $("<form id = 'scoreform'>")
+        var label = $("<label>").text("Congratulations!! You've finished the game! Your score is " + userScore, "! Enter your name below to save your highscore")
+        lastPage.append(label)
+        var input = $("<input id = 'userinitials'>")
+        var inputClass = input.addClass("form-control")
+        lastPage.append(inputClass)
+        $("#text").append(lastPage)
+    }
+
 
 
     function renderQuestion(arr) {
         if (currentQuestion >= questions.length) {
-            return console.log("chicken")
+            return highscores()
         }
         var P = $("<p>")
         var pClass = P.addClass("list-group-item list-group-item-success")
@@ -116,6 +133,3 @@ $(document).ready(function () {
 
     });
 });
-
-var highscores
-// store high scores to local storage
