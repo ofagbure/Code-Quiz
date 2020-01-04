@@ -56,6 +56,49 @@ $(document).ready(function () {
     let currentQuestion = 0;
     var time;
 
+
+    function renderQuestion(arr) {
+        if (currentQuestion >= questions.length) {
+            return console.log("chicken")
+        }
+        var P = $("<p>")
+        var pClass = P.addClass("list-group-item list-group-item-success")
+        var pClassText = pClass.text(arr[currentQuestion].title);
+        div_questions.append(pClassText)
+
+        for (let i = 0; i < arr[currentQuestion].choices.length; i++) {
+
+            var B = $("<button>")
+            var bClass = B.addClass("list-group-item list-group-item-action")
+            var bClassText = bClass.text(arr[currentQuestion].choices[i]);
+            $(B).attr('data-answer', arr[currentQuestion].choices[i]);
+            div_questions.append(bClassText)
+            $("#card-questions").append(div_questions);
+
+            $(B).click(function () {
+                var userAnswer = $(this).attr("data-answer");
+                console.log(userAnswer)
+                console.log(arr[currentQuestion].answer)
+                console.log(currentQuestion)
+                if (userAnswer === arr[currentQuestion].answer) {
+                    alert("Correct!")
+                    // // move to next question 
+                } else {
+                    alert("Incorrect")
+                    // move to next question 
+                    sec -= 15;
+                }
+                $(div_questions).empty();
+
+                currentQuestion++
+                renderQuestion(questions)
+            })
+
+
+
+        }
+    }
+
     function myTimer() {
         $("#timer-display").text(sec + " seconds left");
         sec--;
@@ -69,40 +112,12 @@ $(document).ready(function () {
     var div_questions = $("<div>", "list-group");
 
     $(".btn-primary").click(function () {
-
-
+        console.log('clicked')
+        time = setInterval(myTimer, 1000)
         // Hide opening text
         $(".card-body").hide();
+        renderQuestion(questions)
 
-        var P = $("<p>")
-        var pClass = P.addClass("list-group-item list-group-item-success")
-        var pClassText = pClass.text(questions[currentQuestion].title);
-        div_questions.append(pClassText)
-        // Timer 
-        time = setInterval(myTimer, 1000)
-
-
-        for (let i = 0; i < questions[currentQuestion].choices.length; i++) {
-            var B = $("<button>")
-            var bClass = B.addClass("list-group-item list-group-item-action")
-            var bClassText = bClass.text(questions[currentQuestion].choices[i]);
-            $(B).attr('data-answer', questions[currentQuestion].choices[i]);
-            div_questions.append(bClassText)
-            $("#card-questions").append(div_questions);
-
-            $(B).click(function () {
-                var userAnswer = $(this).attr("data-answer");
-                if (userAnswer === questions[currentQuestion].answer) {
-                    alert("Correct!")
-                    // // move to next question 
-                } else {
-                    alert("Incorrect")
-                    // move to next question 
-                    sec -= 15;
-                }
-                $(div_questions).empty();
-            })
-        };
     });
 });
 
