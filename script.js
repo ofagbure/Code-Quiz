@@ -51,6 +51,20 @@ var questions = [
     }
 ];
 
+function savehighscore() {
+
+}
+
+function renderhighscore() {
+
+}
+
+$(document).click(".nav-link", function(e) {
+    e.preventDefault()
+    renderhighscore()
+})
+
+
 $(document).ready(function () {
     var sec = 600;
     let currentQuestion = 0;
@@ -70,12 +84,11 @@ $(document).ready(function () {
         $("#text").append(lastPage)
     }
 
-
-
     function renderQuestion(arr) {
         if (currentQuestion >= questions.length) {
             clearInterval(time);
             return highscores()
+            savehighscore()
         }
         var P = $("<p>")
         var pClass = P.addClass("list-group-item list-group-item-success")
