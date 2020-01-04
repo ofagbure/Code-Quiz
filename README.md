@@ -22,15 +22,15 @@ The rules of the test are; test takers have 10 minutes to answer all questions. 
 
 See below for helpful screenshots on what to expect from this page, as well as some of its functionalities.
 
-![InitialPage](images/Initial Page.png)
+![Initial Page](/images/Initial Page.png)
 
 This is the initial page of the text. Clicking on the "Begin Test" button starts the timer and also displays the 1st question
 
-![QuestionPage] (images/1st Question.png)
+![Question Page] (/images/1st Question.png)
 
 This is how the questions are displayed.
 
-![HighScores] (images/High Scores.png)
+![High Scores] (/images/High Scores.png)
 
 This is where the high scores of test takers is saved.
 
