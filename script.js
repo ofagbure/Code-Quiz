@@ -51,11 +51,7 @@ var questions = [
     }
 ];
 
-
-
-
 $(document).ready(function () {
-
     var sec = 600;
     let currentQuestion = 0;
     var time;
@@ -72,7 +68,6 @@ $(document).ready(function () {
 
     var div_questions = $("<div>", "list-group");
 
-
     $(".btn-primary").click(function () {
 
 
@@ -88,33 +83,28 @@ $(document).ready(function () {
 
 
         for (let i = 0; i < questions[currentQuestion].choices.length; i++) {
-
             var B = $("<button>")
             var bClass = B.addClass("list-group-item list-group-item-action")
             var bClassText = bClass.text(questions[currentQuestion].choices[i]);
             $(B).attr('data-answer', questions[currentQuestion].choices[i]);
             div_questions.append(bClassText)
+            $("#card-questions").append(div_questions);
 
             $(B).click(function () {
                 var userAnswer = $(this).attr("data-answer");
                 if (userAnswer === questions[currentQuestion].answer) {
                     alert("Correct!")
-
                     // // move to next question 
-                    currentQuestion++;
-
                 } else {
                     alert("Incorrect")
                     // move to next question 
                     sec -= 15;
                 }
-            });
-        }
-        $("#card-questions").append(div_questions);
-
+                $(div_questions).empty();
+            })
+        };
     });
 });
-
 
 var highscores
 // store high scores to local storage
