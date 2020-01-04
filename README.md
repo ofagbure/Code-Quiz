@@ -3,19 +3,38 @@
 ## Table of Contents 
 
 * [Description](#Description)
+* [Rules] (#Rules)
 * [Screenshots](#Screenshots)
 * [License](#License)
 * [Badges](#Badges)
 
 ## Description 
 
-This is a timed code quiz similar to the one given by employers to prospective employees. It is a 20 minute test with 10 questions. The test contains basic coding questions around html, css, and javascript.  
+This is a timed code quiz similar to the one given by employers to prospective employees. It is a 10 minute test with 10 questions. The test contains basic coding questions around html, css, and javascript.  
 
 It should be pretty quick and painless. There should also be a place where high scores are saved for future referrence. 
+
+## Rules
+
+The rules of the test are; test takers have 10 minutes to answer all questions. Each wrong answer takes 15 seconds off the timer. The aim is to correctly answer all questions before the timer runs out. Your time at the end of the test is your score (i.e. the more time you have at the end of the test, the better your score is).
 
 ## Screenshots
 
 See below for helpful screenshots on what to expect from this page, as well as some of its functionalities.
+
+![InitialPage](/images/Initial Page.png)
+
+This is the initial page of the text. Clicking on the "Begin Test" button starts the timer and also displays the 1st question
+
+![QuestionPage] (/images/1st Question.png)
+
+This is how the questions are displayed.
+
+![HighScores] (/images/High Scores.png)
+
+This is where the high scores of test takers is saved.
+
+
 
 ## License
 
