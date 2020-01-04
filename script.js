@@ -93,9 +93,6 @@ $(document).ready(function () {
                 currentQuestion++
                 renderQuestion(questions)
             })
-
-
-
         }
     }
 
@@ -106,7 +103,6 @@ $(document).ready(function () {
             clearInterval(time);
             alert("Time's up! You lose")
         }
-
     }
 
     var div_questions = $("<div>", "list-group");
