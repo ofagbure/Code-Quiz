@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <title>Code Quiz</title>
 </head>
 
@@ -20,11 +21,11 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">View High Scores<span class="sr-only">(current)</span></a>
+                    <a class="nav-link">View High Scores<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
-            <span class="navbar-text">
-                Time Left : 20 mins
+            <span class="navbar-text" id="timer-display">
+                GET READY!
             </span>
         </div>
     </nav>
@@ -33,6 +34,8 @@
     <br>
     <br>
     <div class="card text-center">
+        <div id="card-questions">
+        </div>
         <div class="card-body">
             <h5 class="card-title">Welcome to my coding test site!!</h5>
             <p class="card-text">Relax, this shouldn't be too bad. As a self proclaimed bad test taker, I understand the
@@ -43,17 +46,21 @@
                 Before you begin, a few things to note.
                 <br>
                 <ul>
-                    <li>You will have 20 minutes to complete the test</li>
+                    <li>You will have 10 minutes (600 seconds) to complete the test</li>
                     <br>
                     <li>There are 10 questions</li>
                     <br>
-                    <ul>Feel free to leverage some of your google-foo to get through the questions</ul>
+                    <li> Each wrong answer will take 15 seconds of your time</li>
+                    <br>
+                    <li>The amount of time you have left at the end of the game is your score</li>
+                    <br>
+                    <li>Feel free to leverage some of your google-fu to get through the questions</li>
                     <br>
                     <li>HAVE FUN!!</li>
                     <br>
                 </ul>
             </p>
-            <a href="#" class="btn btn-primary">Begin Test</a>
+            <button type="button" class="btn btn-primary">Begin Test</button>
         </div>
     </div>
 </body>
