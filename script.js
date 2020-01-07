@@ -69,7 +69,7 @@ $(document).click(".nav-link", function (e) {
 
 $(document).ready(function () {
     var sec = 600;
-    let currentQuestion = 9;
+    let currentQuestion = 0;
     var time;
     $(document).on("submit", "#scoreform", function (e) {
         e.preventDefault()
