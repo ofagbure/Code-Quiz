@@ -79,9 +79,7 @@ $(document).ready(function () {
         var userObjectInStorage = localStorage.getItem('userScoresObject');
         if (userObjectInStorage) {
             //if Array exists get it parse it and push new object
-            
            var usersArray = JSON.parse(userObjectInStorage);
-           console.log(usersArray)
             usersArray.push(userObject);
             localStorage.setItem('userScoresObject', JSON.stringify(usersArray));
         } else {
@@ -105,7 +103,7 @@ $(document).ready(function () {
     function renderQuestion(arr) {
         if (currentQuestion >= questions.length) {
             clearInterval(time);
-            highscores();
+            highscores(); 
             return;
         }
         var P = $("<p>")
@@ -124,9 +122,6 @@ $(document).ready(function () {
 
             $(B).click(function () {
                 var userAnswer = $(this).attr("data-answer");
-                // console.log(userAnswer)
-                // console.log(arr[currentQuestion].answer)
-                // console.log(currentQuestion)
                 if (userAnswer === arr[currentQuestion].answer) {
                     alert("Correct!")
                     // // move to next question 
@@ -155,7 +150,6 @@ $(document).ready(function () {
     var div_questions = $("<div>", "list-group");
 
     $(".btn-primary").click(function () {
-        // console.log('clicked')
         time = setInterval(myTimer, 1000)
         // Hide opening text
         $(".card-body").hide();
