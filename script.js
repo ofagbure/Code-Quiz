@@ -52,11 +52,18 @@ var questions = [
 ];
 
 function savehighscore() {
-
+    var eachScore = $("#scoreform").value + userScore
+    var scoreString = JSON.stringify(eachScore)
+    localStorage.setItem("scores", scoreString);
+    eachScore.push(scores);
+      scoreform.value = "";
 }
 
 function renderhighscore() {
-
+    var scores = $("<li>")
+    var eachScore = $("#scoreform").value + userScore
+    scores.textContent = eachScore
+    scores.setAttribute("data-index", i);
 }
 
 $(document).click(".nav-link", function(e) {
@@ -87,8 +94,8 @@ $(document).ready(function () {
     function renderQuestion(arr) {
         if (currentQuestion >= questions.length) {
             clearInterval(time);
-            return highscores()
-            savehighscore()
+            return highscores();
+            savehighscore();
         }
         var P = $("<p>")
         var pClass = P.addClass("list-group-item list-group-item-success")
