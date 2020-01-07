@@ -51,33 +51,43 @@ var questions = [
     }
 ];
 
-function savehighscore() {
-    var eachScore = $("#scoreform").value + userScore
-    var scoreString = JSON.stringify(eachScore)
-    localStorage.setItem("scores", scoreString);
-    eachScore.push(scores);
-      scoreform.value = "";
-}
 
 function renderhighscore() {
-    var scores = $("<li>")
-    var eachScore = $("#scoreform").value + userScore
-    scores.textContent = eachScore
-    scores.setAttribute("data-index", i);
+
+    var userArray = localStorage.getItem('userScoresObject');
+    console.log(userArray);
+    // var scores = $("<li>")
+    // var eachScore = $("#scoreform").value + userScore
+    // scores.textContent = eachScore
+    // scores.setAttribute("data-index", i);
 }
 
-$(document).click(".nav-link", function(e) {
-    e.preventDefault()
-    renderhighscore()
+$(document).click(".nav-link", function (e) {
+    renderhighscore();
 })
 
 
 $(document).ready(function () {
     var sec = 600;
-    let currentQuestion = 0;
+    let currentQuestion = 9;
     var time;
     $(document).on("submit", "#scoreform", function (e) {
         e.preventDefault()
+        var userName = e.target.elements[0].value.trim();
+        var userObject = { 'name': userName, 'score': sec };
+        //get user object in local storage
+        var userObjectInStorage = localStorage.getItem('userScoresObject');
+        if (userObjectInStorage) {
+            //if Array exists get it parse it and push new object
+            
+           var usersArray = JSON.parse(userObjectInStorage);
+           console.log(usersArray)
+            usersArray.push(userObject);
+            localStorage.setItem('userScoresObject', JSON.stringify(usersArray));
+        } else {
+            //if array does not exist create it in local storage
+            localStorage.setItem('userScoresObject', JSON.stringify([userObject]));
+        }
     })
 
     function highscores(arr) {
@@ -89,13 +99,14 @@ $(document).ready(function () {
         var inputClass = input.addClass("form-control")
         lastPage.append(inputClass)
         $("#text").append(lastPage)
+
     }
 
     function renderQuestion(arr) {
         if (currentQuestion >= questions.length) {
             clearInterval(time);
-            return highscores();
-            savehighscore();
+            highscores();
+            return;
         }
         var P = $("<p>")
         var pClass = P.addClass("list-group-item list-group-item-success")
@@ -113,9 +124,9 @@ $(document).ready(function () {
 
             $(B).click(function () {
                 var userAnswer = $(this).attr("data-answer");
-                console.log(userAnswer)
-                console.log(arr[currentQuestion].answer)
-                console.log(currentQuestion)
+                // console.log(userAnswer)
+                // console.log(arr[currentQuestion].answer)
+                // console.log(currentQuestion)
                 if (userAnswer === arr[currentQuestion].answer) {
                     alert("Correct!")
                     // // move to next question 
@@ -144,7 +155,7 @@ $(document).ready(function () {
     var div_questions = $("<div>", "list-group");
 
     $(".btn-primary").click(function () {
-        console.log('clicked')
+        // console.log('clicked')
         time = setInterval(myTimer, 1000)
         // Hide opening text
         $(".card-body").hide();
@@ -153,4 +164,4 @@ $(document).ready(function () {
     });
 });
 
- 
+
