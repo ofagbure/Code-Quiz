@@ -54,12 +54,17 @@ var questions = [
 
 function renderhighscore() {
 
+    $(".card-body").empty();
     var userArray = localStorage.getItem('userScoresObject');
     console.log(userArray);
-    // var scores = $("<li>")
-    // var eachScore = $("#scoreform").value + userScore
-    // scores.textContent = eachScore
-    // scores.setAttribute("data-index", i);
+    var render = JSON.parse(userArray);
+
+    for (i = 0; i < render.length; i++) {
+        var eachScore = $("<li>")
+        eachScore.text = userArray[i]
+        var renderEach = $("<ul>").append(eachScore)
+    }
+      
 }
 
 $(document).click(".nav-link", function (e) {
@@ -90,7 +95,7 @@ $(document).ready(function () {
 
     function highscores(arr) {
         var userScore = sec;
-        var lastPage = $("<form id = 'scoreform'>")
+        var lastPage = $("<form class = 'text-center' id = 'scoreform'>")
         var label = $("<label>").text("Congratulations!! You've finished the game! Enter your name below to save your highscore. Your score is " + userScore)
         lastPage.append(label)
         var input = $("<input id = 'userinitials'>")
