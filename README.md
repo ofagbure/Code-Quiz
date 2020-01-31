@@ -1,6 +1,6 @@
 # Timed Code Quiz
 
-## Table of Contents 
+Click [here](https://ofagbure.github.io/Code-Quiz/) to view the deployed site!
 
 * [Description](#Description)
 * [Rules](#Rules)
